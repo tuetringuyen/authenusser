@@ -18,7 +18,7 @@ import javax.persistence.*;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "createddate")
