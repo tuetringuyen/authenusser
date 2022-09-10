@@ -34,10 +34,10 @@ public class UserEntity extends BaseEntity{
     @Column(name = "verification_code", length = 64)
     private String verificationCode;
 
-    @Column
-    private boolean enabled;
+//    @Column
+//    private boolean enabled;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "userid"),
             inverseJoinColumns = @JoinColumn(name = "roleid"))
     @JsonIgnore
