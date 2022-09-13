@@ -37,11 +37,11 @@ public class UserEntity extends BaseEntity{
 //    @Column
 //    private boolean enabled;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "userid"),
-            inverseJoinColumns = @JoinColumn(name = "roleid"))
-    @JsonIgnore
-    private List<RoleEntity> roles = new ArrayList<>();
+//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "userid"),
+//            inverseJoinColumns = @JoinColumn(name = "roleid"))
+//    @JsonIgnore
+//    private List<RoleEntity> roles = new ArrayList<>();
 
 
 

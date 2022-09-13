@@ -1,6 +1,7 @@
 package com.example.authenusser.config;
 
 import com.example.authenusser.security.CustomSuccessHandler;
+//import com.example.authenusser.service.impl.CustomUserDetailsService;
 import com.example.authenusser.service.impl.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -40,11 +41,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
 
-        http.authorizeRequests().antMatchers("/", "/dang-nhap","/trang-chu").permitAll();
-
-//        http.authorizeRequests().antMatchers("/trang-chu").authenticated();
-        http.authorizeRequests().antMatchers("/quan-tri/**").access("hasRole('ADMIN')");
-
+//        http.authorizeRequests().antMatchers("/", "/dang-nhap","/trang-chu").permitAll();
+//
+////        http.authorizeRequests().antMatchers("/trang-chu").authenticated();
+//        http.authorizeRequests().antMatchers("/quan-tri/**").access("hasRole('ADMIN')");
 
 
         // Cấu hình cho Login Form.

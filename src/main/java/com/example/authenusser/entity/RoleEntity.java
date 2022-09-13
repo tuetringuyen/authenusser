@@ -20,9 +20,9 @@ public class RoleEntity extends BaseEntity{
     @Column(name = "code")
     private String code;
 
-    @ManyToMany(mappedBy = "roles", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<UserEntity> users = new ArrayList<>();
+//    @ManyToMany(mappedBy = "roles", cascade = CascadeType.ALL)
+//    @JsonIgnore
+//    private List<UserEntity> users = new ArrayList<>();
 
 
 

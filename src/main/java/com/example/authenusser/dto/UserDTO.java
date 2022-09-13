@@ -1,6 +1,7 @@
 package com.example.authenusser.dto;
 
 import com.example.authenusser.entity.RoleEntity;
+import com.example.authenusser.entity.User_Role;
 
 import javax.persistence.Column;
 import java.util.ArrayList;
@@ -17,6 +18,33 @@ public class UserDTO extends AbstractDTO<UserDTO> {
     private String verificationCode;
     private boolean enabled;
     private List<RoleEntity> roles = new ArrayList<>();
+    private String module;
+    private String chucnang;
+    private int asset;
+
+    public String getModule() {
+        return module;
+    }
+
+    public void setModule(String module) {
+        this.module = module;
+    }
+
+    public String getChucnang() {
+        return chucnang;
+    }
+
+    public void setChucnang(String chucnang) {
+        this.chucnang = chucnang;
+    }
+
+    public int getAsset() {
+        return asset;
+    }
+
+    public void setAsset(int asset) {
+        this.asset = asset;
+    }
 
     public String getUserName() {
         return userName;
