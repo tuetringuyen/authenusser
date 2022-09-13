@@ -7,9 +7,11 @@ import com.example.authenusser.entity.User_Role;
 import com.example.authenusser.repository.RoleRepository;
 import com.example.authenusser.repository.UserRepository;
 import com.example.authenusser.repository.User_RoleRepository;
+import com.sun.deploy.net.HttpResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller(value = "homecontroller")
+@RestController(value = "homecontroller")
 public class homecontroller {
 
     @Autowired
@@ -61,29 +63,15 @@ public class homecontroller {
         return user;
     }
 
+
     @DeleteMapping("/user/delete/{id}")
     public void delete(@PathVariable("id") Long id) {
         userRepository.deleteById(id);
     }
 
-    @PostMapping("/user/create")
-    public UserEntity post(@RequestBody UserEntity user ) {
-        String password = passwordEncoder.encode(user.getPassword());
-        user.setPassword(password);
-        user.setId(userRepository.getMaxId()+1);
-        userRepository.save(user);
-        RoleEntity role = roleRepository.findByCode("post");
-        User_Role user_role = new User_Role();
-        user_role.setRole(role);
-        user_role.setUser(user);
-        user_role.setId(user_roleRepository.getMaxId()+1);
-        user_roleRepository.save(user_role);
-//        List<RoleEntity> roleEntities = new ArrayList<>();
-//        roleEntities.add(role);
-//        user.setRoles(roleEntities);
 
-        return user;
-    }
+
+
 
     @GetMapping("/danhsach/{id}")
     public String getRoleTbByUserID(@PathVariable("id")Long id){
@@ -111,6 +99,7 @@ public class homecontroller {
     @GetMapping(value = {"/quan-tri/trang-chu"})
     public ModelAndView adminPage() {
         ModelAndView mav = new ModelAndView("Admin");
+
         return mav;
     }
 }

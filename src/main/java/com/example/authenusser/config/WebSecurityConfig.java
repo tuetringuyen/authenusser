@@ -6,6 +6,7 @@ import com.example.authenusser.service.impl.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -41,10 +42,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
 
-//        http.authorizeRequests().antMatchers("/", "/dang-nhap","/trang-chu").permitAll();
-//
-////        http.authorizeRequests().antMatchers("/trang-chu").authenticated();
-//        http.authorizeRequests().antMatchers("/quan-tri/**").access("hasRole('ADMIN')");
+        http.authorizeRequests().antMatchers("/", "/dang-nhap","/trang-chu").permitAll();
+
+
+//        http.authorizeRequests().mvcMatchers(HttpMethod.PUT,"/api/author/**").access("hasRole('PUT')");
+//        http.authorizeRequests().mvcMatchers(HttpMethod.POST,"/api/author/**").access("hasRole('POST')");
+//        http.authorizeRequests().antMatchers("/trang-chu").authenticated();
+        http.authorizeRequests().antMatchers("/quan-tri/**").access("hasRole('ADMIN')");
+
+
 
 
         // Cấu hình cho Login Form.
